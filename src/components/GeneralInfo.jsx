@@ -25,7 +25,7 @@ export default function GeneralInfos(){
     }
 
     return(
-        <>
+        <div className="general-infos">
             <Infos 
             classname="general-input"
             handleInputChange={handleInput}
@@ -46,6 +46,6 @@ export default function GeneralInfos(){
             handleInputChange={handleInput}
             handleBlurChange={handleBlur}
             placeHoldertext = "Location"/>
-        </>
+        </div>
     )
 }

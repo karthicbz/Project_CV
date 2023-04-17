@@ -3,3 +3,8 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.general-input{
+  font-size: 1.5rem;
+  border: none;
+}

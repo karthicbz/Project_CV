@@ -76,7 +76,7 @@ export default function WorkExperience() {
   }
 
   return (
-    <div className="App">
+    <div className="Experience">
       <>
         {jobDetails.map((details) => (
           <JobDetailsContent

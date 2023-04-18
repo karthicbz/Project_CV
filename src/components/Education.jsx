@@ -95,7 +95,7 @@ export default function EducationDetails(){
     }
 
     return(
-        <>
+        <div className="Education">
         <>
             {eduDetails.map(details=><EducationDetailsContent
             schoolName={details.schoolName}
@@ -108,6 +108,6 @@ export default function EducationDetails(){
         <EducationDetailsInput 
         onInputChange={handleChange}
         onSave={addItems}/>
-        </>
+        </div>
     )
 }

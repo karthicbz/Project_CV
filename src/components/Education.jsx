@@ -25,25 +25,28 @@ function EducationDetailsInput(props){
                 id="school"
                 placeholder="School / College Name" 
                 type="text"
-                onChange={props.onInputChange}/>
+                onChange={props.onInputChange}
+                value={props.name}/>
 
                 <label id="school-from">From</label>
 
                 <Input 
                 id="school-from" 
                 type="date"
-                onChange={props.onInputChange}/>
+                onChange={props.onInputChange}
+                value={props.from}/>
 
                 <label id="school-to">To</label>
 
                 <Input 
                 id="school-to" 
                 type="date"
-                onChange={props.onInputChange}/>
+                onChange={props.onInputChange}
+                value={props.to}/>
 
                 <label htmlFor="degree" id='degree'>Degree</label>
                 <Select name="" id="degree" onChange={props.onInputChange}>
-                    <option value={'None'}>None</option>
+                    <option selected="selected" value={'None'}>None</option>
                     <option value={'High School or Equivalent'}>High School or Equivalent</option>
                     <option value={'Diploma'}>Diploma</option>
                     <option value={"Bachelor's"}>Bachelor's</option>
@@ -51,9 +54,20 @@ function EducationDetailsInput(props){
                     <option value={"Doctorate"}>Doctorate</option>
                     <option value={"Other"}>Other</option>
                 </Select>
-                <Input id="school-field" placeholder="Field of Study" type="text" onChange={props.onInputChange}/>
 
-                <Input id="school-location" placeholder="location" type="text" onChange={props.onInputChange}/>
+                <Input 
+                id="school-field" 
+                placeholder="Field of Study" 
+                type="text" 
+                onChange={props.onInputChange}
+                value={props.fieldOfStudy}/>
+
+                <Input 
+                id="school-location" 
+                placeholder="location" 
+                type="text" 
+                onChange={props.onInputChange}
+                value={props.location}/>
 
                 <Button id="school-save" onClick={props.onSave}>Save</Button>
                 <Button id="school-cancel" onClick={props.onCancel}>Cancel</Button>
@@ -98,6 +112,13 @@ export default function EducationDetails(){
             fieldOfStudy:fieldOfStudy,
             location:location,
         }]);
+        
+        setSchoolName('');
+        setFrom('dd/mm/yyyy');
+        setTo('dd/mm/yyyy');
+        setFieldOfStudy('');
+        setLocation('');
+
         e.target.parentNode.setAttribute('style', 'display:none;');
     }
 
@@ -125,7 +146,12 @@ export default function EducationDetails(){
         onInputChange={handleChange}
         onSave={addItems}
         onCancel={hideComponent}
-        addNewDetails={showEduDetailsInput}/>
+        addNewDetails={showEduDetailsInput}
+        name={schoolName}
+        from={from}
+        to={to}
+        fieldOfStudy={fieldOfStudy}
+        location={location}/>
         </div>
     )
 }

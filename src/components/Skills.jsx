@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Input } from '@chakra-ui/react'
 
 let currentItem = 0;
 // let para = '';
@@ -50,11 +52,21 @@ export default function Skills() {
         <p className="skill--para" onClick={showSkillEditor}>{para}</p>
         <section className="skills--editor">
           <ul>{items.map(item=><li onClick={removeItem}>{item.skill}</li>)}</ul>
-          <button onClick={makePara}>Save Skills</button>
+          <Button 
+          borderColor="burlywood" 
+          color="burlywood" 
+          _hover={{ bg: 'burlywood', color:'white' }}
+          _active={{bg: '#b4956d'}} 
+          size="md" 
+          variant="outline"
+          onClick={makePara}>Save Skills</Button>
           <div>
-          <input type="text" value={text}
+          <Input 
+          placeholder="Machine Learning"
+          type="text" 
+          value={text}
           onChange={handleChange}/>
-          <button onClick={addItem}>Add Skill</button>
+          <Button onClick={addItem}>Add Skill</Button>
           </div>
         </section>
     </div>

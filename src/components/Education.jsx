@@ -7,7 +7,7 @@ let currentId = 0;
 
 function EducationDetailsContent(props){
     return(
-        <div className="education-content">
+        <div className="education-content" onClick={props.deleteEduDetails} id={props.schoolName}>
             <p><strong>{props.degree}</strong></p>
             <p>{props.schoolName}</p>
             <p>{props.fieldOfStudy}</p>
@@ -46,7 +46,7 @@ function EducationDetailsInput(props){
 
                 <label htmlFor="degree" id='degree'>Degree</label>
                 <Select name="" id="degree" onChange={props.onInputChange}>
-                    <option selected="selected" value={'None'}>None</option>
+                    <option value={'None'}>None</option>
                     <option value={'High School or Equivalent'}>High School or Equivalent</option>
                     <option value={'Diploma'}>Diploma</option>
                     <option value={"Bachelor's"}>Bachelor's</option>
@@ -104,7 +104,7 @@ export default function EducationDetails(){
 
     function addItems(e){
         setEduDetails([...eduDetails, {
-            key:++currentId,
+            key:currentId+=1,
             schoolName:schoolName,
             from:from,
             to:to,
@@ -112,10 +112,10 @@ export default function EducationDetails(){
             fieldOfStudy:fieldOfStudy,
             location:location,
         }]);
-        
+
         setSchoolName('');
-        setFrom('dd/mm/yyyy');
-        setTo('dd/mm/yyyy');
+        setFrom('yyyy-MM-dd');
+        setTo('yyyy-MM-dd');
         setFieldOfStudy('');
         setLocation('');
 
@@ -131,16 +131,23 @@ export default function EducationDetails(){
         e.target.parentNode.childNodes[0].setAttribute('style', 'display:block;');
     }
 
+    function deleteDetails(e){
+        setEduDetails(eduDetails.filter(details=>e.target.parentNode.id !== details.schoolName));
+    }
+
     return(
         <div className="Education">
         <>
             {eduDetails.map(details=><EducationDetailsContent
+            // key={details.key}
             schoolName={details.schoolName}
             from={details.from}
             to={details.to}
             degree={details.degree}
             fieldOfStudy={details.fieldOfStudy}
-            location={details.location}/>)}
+            location={details.location}
+            deleteEduDetails={deleteDetails}
+            />)}
         </>
         <EducationDetailsInput 
         onInputChange={handleChange}

@@ -8,10 +8,10 @@ let currentId = 0;
 function EducationDetailsContent(props){
     return(
         <div className="education-content">
+            <p><strong>{props.degree}</strong></p>
             <p>{props.schoolName}</p>
-            <p>{props.from+' - '+props.to}</p>
-            <p>{props.degree}</p>
             <p>{props.fieldOfStudy}</p>
+            <p>{props.from+' - '+props.to}</p>
             <p>{props.location}</p>
         </div>
     )
@@ -58,7 +58,7 @@ function EducationDetailsInput(props){
                 <Button id="school-save" onClick={props.onSave}>Save</Button>
                 <Button id="school-cancel" onClick={props.onCancel}>Cancel</Button>
             </div>
-            <Button className="show-edu-details">Add Education Details</Button>
+            <Button className="show-edu-details" onClick={props.addNewDetails}>Add Education Details</Button>
         </div>
     )
 }
@@ -82,13 +82,13 @@ export default function EducationDetails(){
         }else if(e.target.id === 'degree'){
             setDegree(e.target.value);
         }else if(e.target.id === 'school-field'){
-            setFieldOfStudy(e.target.value)
+            setFieldOfStudy(e.target.value);
         }else if(e.target.id === 'school-location'){
-            setLocation(e.target.value)
+            setLocation(e.target.value);
         }
     }
 
-    function addItems(){
+    function addItems(e){
         setEduDetails([...eduDetails, {
             key:++currentId,
             schoolName:schoolName,
@@ -98,11 +98,16 @@ export default function EducationDetails(){
             fieldOfStudy:fieldOfStudy,
             location:location,
         }]);
+        e.target.parentNode.setAttribute('style', 'display:none;');
     }
 
     function hideComponent(e){
         // console.log(e.target.parentNode);
-        e.target.parentNode.classList.add('hide-edu-input');
+        e.target.parentNode.setAttribute('style', 'display:none;');
+    }
+
+    function showEduDetailsInput(e){
+        e.target.parentNode.childNodes[0].setAttribute('style', 'display:block;');
     }
 
     return(
@@ -119,7 +124,8 @@ export default function EducationDetails(){
         <EducationDetailsInput 
         onInputChange={handleChange}
         onSave={addItems}
-        onCancel={hideComponent}/>
+        onCancel={hideComponent}
+        addNewDetails={showEduDetailsInput}/>
         </div>
     )
 }

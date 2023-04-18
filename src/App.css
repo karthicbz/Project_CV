@@ -113,7 +113,6 @@ body{
 }
 
 .add-edu-details{
-  padding: 1rem;
   display: none;
 }
 
@@ -133,4 +132,12 @@ body{
 
 .hide-edu-input{
   display: none;
+}
+
+.Education{
+  padding: 1rem;
+}
+
+.add-edu-details-container>.chakra-button{
+  margin-top: 8px;
 }

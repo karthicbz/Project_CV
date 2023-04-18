@@ -18,9 +18,17 @@ function JobDetailsContent(props) {
 function JobDetailsInput(props) {
   return (
     <div className="job-input-container">
-      <input type="text" onChange={props.onInputChange} id="position" />
+      <input
+      placeholder="Position" 
+      type="text" 
+      onChange={props.onInputChange} 
+      id="position" />
 
-      <input type="text" onChange={props.onInputChange} id="companyName" />
+      <input 
+      placeholder="Company Name"
+      type="text" 
+      onChange={props.onInputChange} 
+      id="companyName" />
 
       <label id="from">From</label>
 
@@ -30,9 +38,15 @@ function JobDetailsInput(props) {
 
       <input type="date" id="to" onChange={props.onInputChange} />
 
-      <input type="text" onChange={props.onInputChange} id="location" />
+      <input 
+      placeholder="Location"
+      type="text" 
+      onChange={props.onInputChange} 
+      id="location" />
 
-      <textarea className="description"></textarea>
+      <textarea 
+      placeholder="Description turn into buller points"
+      className="description"></textarea>
       <Button 
       borderColor="burlywood" 
       color="burlywood" 

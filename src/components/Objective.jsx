@@ -9,7 +9,8 @@ export default function Objective(){
 
     return(
         <div className="objective">
-            <textarea 
+            <textarea
+            rows="5"
             className="objective--textarea" 
             placeholder="Lorem Ipsum"
             onChange={handleInput}>{text}</textarea>

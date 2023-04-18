@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Button, ButtonGroup } from '@chakra-ui/react';
+import { Input } from '@chakra-ui/react';
+import { Select } from '@chakra-ui/react'
 
 let currentId = 0;
 
@@ -16,43 +19,46 @@ function EducationDetailsContent(props){
 
 function EducationDetailsInput(props){
     return(
-        <div>
-            <input 
-            id="school"
-            placeholder="School / College Name" 
-            type="text"
-            onChange={props.onInputChange}/>
+        <div className="add-edu-details-container">
+            <div className="add-edu-details">
+                <Input 
+                id="school"
+                placeholder="School / College Name" 
+                type="text"
+                onChange={props.onInputChange}/>
 
-            <label id="school-from">From</label>
+                <label id="school-from">From</label>
 
-            <input 
-            id="school-from" 
-            type="date"
-            onChange={props.onInputChange}/>
+                <Input 
+                id="school-from" 
+                type="date"
+                onChange={props.onInputChange}/>
 
-            <label id="school-to">To</label>
+                <label id="school-to">To</label>
 
-            <input 
-            id="school-to" 
-            type="date"
-            onChange={props.onInputChange}/>
+                <Input 
+                id="school-to" 
+                type="date"
+                onChange={props.onInputChange}/>
 
-            <label htmlFor="degree" id='degree'>Degree</label>
-            <select name="" id="degree" onChange={props.onInputChange}>
-                <option value={'None'}>None</option>
-                <option value={'High School or Equivalent'}>High School or Equivalent</option>
-                <option value={'Diploma'}>Diploma</option>
-                <option value={"Bachelor's"}>Bachelor's</option>
-                <option value={"Master's"}>Master's</option>
-                <option value={"Doctorate"}>Doctorate</option>
-                <option value={"Other"}>Other</option>
-            </select>
-            <input id="school-field" placeholder="Field of Study" type="text" onChange={props.onInputChange}/>
+                <label htmlFor="degree" id='degree'>Degree</label>
+                <Select name="" id="degree" onChange={props.onInputChange}>
+                    <option value={'None'}>None</option>
+                    <option value={'High School or Equivalent'}>High School or Equivalent</option>
+                    <option value={'Diploma'}>Diploma</option>
+                    <option value={"Bachelor's"}>Bachelor's</option>
+                    <option value={"Master's"}>Master's</option>
+                    <option value={"Doctorate"}>Doctorate</option>
+                    <option value={"Other"}>Other</option>
+                </Select>
+                <Input id="school-field" placeholder="Field of Study" type="text" onChange={props.onInputChange}/>
 
-            <input id="school-location" placeholder="location" type="text" onChange={props.onInputChange}/>
+                <Input id="school-location" placeholder="location" type="text" onChange={props.onInputChange}/>
 
-            <button id="school-save" onClick={props.onSave}>Save</button>
-            <button id="school-cancel">Cancel</button>
+                <Button id="school-save" onClick={props.onSave}>Save</Button>
+                <Button id="school-cancel" onClick={props.onCancel}>Cancel</Button>
+            </div>
+            <Button className="show-edu-details">Add Education Details</Button>
         </div>
     )
 }
@@ -94,6 +100,11 @@ export default function EducationDetails(){
         }]);
     }
 
+    function hideComponent(e){
+        // console.log(e.target.parentNode);
+        e.target.parentNode.classList.add('hide-edu-input');
+    }
+
     return(
         <div className="Education">
         <>
@@ -107,7 +118,8 @@ export default function EducationDetails(){
         </>
         <EducationDetailsInput 
         onInputChange={handleChange}
-        onSave={addItems}/>
+        onSave={addItems}
+        onCancel={hideComponent}/>
         </div>
     )
 }

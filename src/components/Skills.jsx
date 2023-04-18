@@ -32,6 +32,8 @@ export default function Skills() {
       [...items].forEach(item=>{
         setPara(para += item.skill+', ');
       });
+      // para[para.length-2] = para[para.length-2].replace(',', '');
+      setPara(para = para.slice(0, para.length-2)+'.');
       e.target.parentNode.classList.add('hide-skills-editor');
       e.target.parentNode.parentNode.childNodes[0].classList.remove('skill--para');
     }else{

@@ -75,6 +75,7 @@ body{
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding: 0px 1rem 0px 1rem;
 }
 
 .save-skill-button{
@@ -137,6 +138,10 @@ body{
 .Education{
   /* padding: 1rem; */
   /* margin-bottom: 10px; */
+}
+
+.add-edu-details-container{
+  padding: 1rem;
 }
 
 .add-edu-details-container>.chakra-button{

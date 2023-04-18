@@ -5,20 +5,23 @@ import Objective from './components/Objective'
 import Skills from './components/Skills'
 import WorkExperience from './components/WorkExperience'
 import EducationDetails from './components/Education'
+import { Heading } from '@chakra-ui/react'
 
 function App() {
 
   return (
     <div className="App">
-      <h1 className='app-heading'>Resume Builder</h1>
+      {/* <h1 className='app-heading'>Resume Builder</h1>
+       */}
+       <Heading as='h4' size='md' className='app-heading'>Resume Builder</Heading>
       <GeneralInfos />
-      <h2 className='headings'>Objective</h2>
+      <Heading as='h5' size='sm' className='headings'>Objective</Heading>
       <Objective />
-      <h2 className='headings'>Skills</h2>
+      <Heading as='h5' size='sm' className='headings'>Skills</Heading>
       <Skills />
-      <h2 className='headings'>Work Experience</h2>
+      <Heading as='h5' size='sm' className='headings'>Work Experience</Heading>
       <WorkExperience />
-      <h2 className='headings'>Education</h2>
+      <Heading as='h5' size='sm' className='headings'>Education</Heading>
       <EducationDetails />
     </div>
   )

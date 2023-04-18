@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, ButtonGroup } from '@chakra-ui/react'
 
 let currentId = 0;
 
@@ -32,8 +33,15 @@ function JobDetailsInput(props) {
       <input type="text" onChange={props.onInputChange} id="location" />
 
       <textarea className="description"></textarea>
-      <button onClick={props.onPressingSave}>Save</button>
-      <button>Cancel</button>
+      <Button 
+      borderColor="burlywood" 
+      color="burlywood" 
+      _hover={{ bg: 'burlywood', color:'white' }}
+      _active={{bg: '#b4956d'}} 
+      size="md" 
+      variant="outline" 
+      onClick={props.onPressingSave}>Save</Button>
+      <Button colorScheme="gray" size="md">Cancel</Button>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 function Infos(props){
-    console.log(props);
+    // console.log(props);
     return(
         <>
             <input type="text" className={props.classname}

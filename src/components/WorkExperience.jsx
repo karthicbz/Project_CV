@@ -3,7 +3,7 @@ import { useState } from "react";
 let currentId = 0;
 
 function JobDetailsContent(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="job-details-container">
       <p>{props.position}</p>
@@ -72,7 +72,7 @@ export default function WorkExperience() {
         prevWorkLocation: location
       }
     ]);
-    console.log(jobDetails);
+    // console.log(jobDetails);
   }
 
   return (

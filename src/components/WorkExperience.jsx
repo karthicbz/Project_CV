@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Input } from '@chakra-ui/react';
+import { Textarea } from '@chakra-ui/react'
 
 let currentId = 0;
 
 function JobDetailsContent(props) {
   // console.log(props);
   return (
-    <div className="job-details-container">
-      <p>{props.position}</p>
+    <div className="job-details-container" id={props.id}>
+      <p><strong>{props.position}</strong></p>
       <p>{props.companyName}</p>
       <p>{props.from + " - " + props.to}</p>
       <p>{props.location}</p>
@@ -18,13 +20,13 @@ function JobDetailsContent(props) {
 function JobDetailsInput(props) {
   return (
     <div className="job-input-container">
-      <input
+      <Input
       placeholder="Position" 
       type="text" 
       onChange={props.onInputChange} 
       id="position" />
 
-      <input 
+      <Input 
       placeholder="Company Name"
       type="text" 
       onChange={props.onInputChange} 
@@ -32,21 +34,23 @@ function JobDetailsInput(props) {
 
       <label id="from">From</label>
 
-      <input type="date" id="from" onChange={props.onInputChange} />
+      <Input type="date" id="from" onChange={props.onInputChange} />
 
       <label id="to">To</label>
 
-      <input type="date" id="to" onChange={props.onInputChange} />
+      <Input type="date" id="to" onChange={props.onInputChange} />
 
-      <input 
+      <Input 
       placeholder="Location"
       type="text" 
       onChange={props.onInputChange} 
       id="location" />
 
-      <textarea 
-      placeholder="Description turn into buller points"
-      className="description"></textarea>
+      <label id="description">Description</label>
+      <Textarea 
+      placeholder="Description turn into bullet points"
+      className="description"></Textarea>
+
       <Button 
       borderColor="burlywood" 
       color="burlywood" 
@@ -55,7 +59,8 @@ function JobDetailsInput(props) {
       size="md" 
       variant="outline" 
       onClick={props.onPressingSave}>Save</Button>
-      <Button colorScheme="gray" size="md">Cancel</Button>
+
+      <Button colorScheme="gray" size="md" onClick={props.hideContainer}>Cancel</Button>
     </div>
   );
 }
@@ -97,11 +102,20 @@ export default function WorkExperience() {
     // console.log(jobDetails);
   }
 
+  function hideJobInputContainer(e){
+    e.target.parentNode.setAttribute('style', 'display:none;');
+  }
+
+  function showJobInputContainer(e){
+    e.target.parentNode.childNodes[0].setAttribute('style', 'display:block;')
+  }
+
   return (
     <div className="Experience">
       <>
         {jobDetails.map((details) => (
           <JobDetailsContent
+            id={details.id}
             position={details.prevPosition}
             companyName={details.prevCompanyName}
             from={details.prevWorkStart}
@@ -113,7 +127,9 @@ export default function WorkExperience() {
       <JobDetailsInput
         onInputChange={handleInputChange}
         onPressingSave={saveJobDetails}
+        hideContainer={hideJobInputContainer}
       />
+      <Button className="add-work-experiance" onClick={showJobInputContainer}>Add Work Experiance</Button>
     </div>
   );
 }

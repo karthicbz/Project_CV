@@ -116,7 +116,7 @@ body{
 .add-edu-details{
   display: none;
   padding: 1rem;
-  border: 1px solid gray;
+  border: 1px solid lightgray;
   border-radius: 10px;
 }
 
@@ -142,11 +142,6 @@ body{
   display: none;
 }
 
-.Education{
-  /* padding: 1rem; */
-  /* margin-bottom: 10px; */
-}
-
 .add-edu-details-container{
   padding: 1rem;
 }
@@ -164,4 +159,16 @@ body{
 
 .education-content:hover{
   background: rgba(245, 124, 124, 0.342);
+}
+
+.job-input-container{
+  display: none;
+  padding: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.Experience{
+  padding: 1rem;
 }

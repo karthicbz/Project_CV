@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://karthicbz.github.io/Project_CV",
+  "homepage": "https://karthicbz.github.io/Project_CV/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -14,9 +14,11 @@ function JobDetailsContent(props) {
   return (
     <div className="job-details" id={props.id}>
       <p style={positionStyle}><strong>{props.position}</strong></p>
-      <p style={{fontSize:'1.1rem', fontWeight:'bold'}}>{props.companyName}</p>
+      <p style={{fontSize:'1.1rem', fontWeight:'bold'}}>{props.companyName}<span style={{fontWeight:'normal', fontSize:'1rem'}}> - {props.location}</span></p>
+      {/* <span>{props.location}</span> */}
       <p>{props.from + " - " + props.to}</p>
-      {/* <p>{props.location}</p> */}
+      {/* <p>{props.description}</p> */}
+      <ul style={{marginLeft:'1.1rem'}}>{props.description.split('\n').map(desc=><li>{desc}</li>)}</ul>
     </div>
   );
 }
@@ -50,11 +52,13 @@ function JobDetailsInput(props) {
       onChange={props.onInputChange} 
       id="location" />
 
-      <label id="description">Description</label>
+      <label>Description</label>
       <Textarea
+      id="description"
       rows="5" 
       placeholder="Newline turns into bullet point"
-      className="description"></Textarea>
+      className="description"
+      onChange={props.onInputChange}></Textarea>
 
       <Button 
       borderColor="burlywood" 
@@ -76,6 +80,7 @@ export default function WorkExperience() {
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [location, setLocation] = useState("");
+  const [description, setDescription] = useState("");
   let [jobDetails, setJobDetails] = useState([]);
 
   function handleInputChange(e) {
@@ -89,6 +94,8 @@ export default function WorkExperience() {
       setToDate(e.target.value);
     } else if (e.target.id === "location") {
       setLocation(e.target.value);
+    } else if(e.target.id === "description"){
+      setDescription(e.target.value);
     }
   }
 
@@ -101,10 +108,11 @@ export default function WorkExperience() {
         prevCompanyName: companyName,
         prevWorkStart: fromDate,
         prevWorkEnd: toDate,
-        prevWorkLocation: location
+        prevWorkLocation: location,
+        prevWorkDesc: description,
       }
     ]);
-    // console.log(jobDetails);
+    console.log(jobDetails);
     e.target.parentNode.setAttribute('style', 'display:none;');
   }
 
@@ -127,6 +135,7 @@ export default function WorkExperience() {
             from={details.prevWorkStart}
             to={details.prevWorkEnd}
             location={details.prevWorkLocation}
+            description={details.prevWorkDesc}
           />
         ))}
       </div>

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Button, ButtonGroup } from '@chakra-ui/react';
 import { Input } from '@chakra-ui/react';
-import { Select } from '@chakra-ui/react'
+import { Select } from '@chakra-ui/react';
+import PrintProvider, { Print, NoPrint } from 'react-easy-print';
 
 let currentId = 0;
 
@@ -149,16 +150,16 @@ export default function EducationDetails(){
             deleteEduDetails={deleteDetails}
             />)}
         </>
-        <EducationDetailsInput 
-        onInputChange={handleChange}
-        onSave={addItems}
-        onCancel={hideComponent}
-        addNewDetails={showEduDetailsInput}
-        name={schoolName}
-        from={from}
-        to={to}
-        fieldOfStudy={fieldOfStudy}
-        location={location}/>
+            <EducationDetailsInput 
+            onInputChange={handleChange}
+            onSave={addItems}
+            onCancel={hideComponent}
+            addNewDetails={showEduDetailsInput}
+            name={schoolName}
+            from={from}
+            to={to}
+            fieldOfStudy={fieldOfStudy}
+            location={location}/>
         </div>
     )
 }

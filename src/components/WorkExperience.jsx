@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Input } from '@chakra-ui/react';
 import { Textarea } from '@chakra-ui/react'
+import PrintProvider, { Print, NoPrint } from 'react-easy-print';
 
 let currentId = 0;
 let positionStyle = {
@@ -122,7 +123,7 @@ export default function WorkExperience() {
   }
 
   function showJobInputContainer(e){
-    e.target.parentNode.childNodes[1].setAttribute('style', 'display:block;');
+    e.target.parentNode.parentNode.childNodes[1].setAttribute('style', 'display:block;');
   }
 
   function removeJobDetails(e){
@@ -131,26 +132,32 @@ export default function WorkExperience() {
 
   return (
     <div className="Experience">
-      <div className="job-details-container">
-        {jobDetails.map((details) => (
-          <JobDetailsContent
-            id={details.id}
-            position={details.prevPosition}
-            companyName={details.prevCompanyName}
-            from={details.prevWorkStart}
-            to={details.prevWorkEnd}
-            location={details.prevWorkLocation}
-            description={details.prevWorkDesc}
-            deleteJobDetail={removeJobDetails}
-          />
-        ))}
-      </div>
-      <JobDetailsInput
-        onInputChange={handleInputChange}
-        onPressingSave={saveJobDetails}
-        hideContainer={hideJobInputContainer}
-      />
-      <Button className="add-work-experiance" onClick={showJobInputContainer}>Add Work Experiance</Button>
+      <PrintProvider>
+        <div className="job-details-container">
+          {jobDetails.map((details) => (
+            <Print>
+              <JobDetailsContent
+                id={details.id}
+                position={details.prevPosition}
+                companyName={details.prevCompanyName}
+                from={details.prevWorkStart}
+                to={details.prevWorkEnd}
+                location={details.prevWorkLocation}
+                description={details.prevWorkDesc}
+                deleteJobDetail={removeJobDetails}
+              />
+            </Print>
+          ))}
+        </div>
+        <JobDetailsInput
+          onInputChange={handleInputChange}
+          onPressingSave={saveJobDetails}
+          hideContainer={hideJobInputContainer}
+        />
+        <NoPrint>
+          <Button className="add-work-experiance" onClick={showJobInputContainer}>Add Work Experiance</Button>
+        </NoPrint>
+      </PrintProvider>
     </div>
   );
 }

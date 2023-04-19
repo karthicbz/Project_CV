@@ -20,60 +20,57 @@ function EducationDetailsContent(props){
 
 function EducationDetailsInput(props){
     return(
-        <div className="add-edu-details-container">
-            <div className="add-edu-details">
-                <Input 
-                id="school"
-                placeholder="School / College Name" 
-                type="text"
-                onChange={props.onInputChange}
-                value={props.name}/>
+        <div className="add-edu-details">
+            <Input 
+            id="school"
+            placeholder="School / College Name" 
+            type="text"
+            onChange={props.onInputChange}
+            value={props.name}/>
 
-                <label id="school-from">From</label>
+            <label id="school-from">From</label>
 
-                <Input 
-                id="school-from" 
-                type="date"
-                onChange={props.onInputChange}
-                value={props.from}/>
+            <Input 
+            id="school-from" 
+            type="date"
+            onChange={props.onInputChange}
+            value={props.from}/>
 
-                <label id="school-to">To</label>
+            <label id="school-to">To</label>
 
-                <Input 
-                id="school-to" 
-                type="date"
-                onChange={props.onInputChange}
-                value={props.to}/>
+            <Input 
+            id="school-to" 
+            type="date"
+            onChange={props.onInputChange}
+            value={props.to}/>
 
-                <label htmlFor="degree" id='degree'>Degree</label>
-                <Select name="" id="degree" onChange={props.onInputChange}>
-                    <option value={'None'}>None</option>
-                    <option value={'High School or Equivalent'}>High School or Equivalent</option>
-                    <option value={'Diploma'}>Diploma</option>
-                    <option value={"Bachelor's"}>Bachelor's</option>
-                    <option value={"Master's"}>Master's</option>
-                    <option value={"Doctorate"}>Doctorate</option>
-                    <option value={"Other"}>Other</option>
-                </Select>
+            <label htmlFor="degree" id='degree'>Degree</label>
+            <Select name="" id="degree" onChange={props.onInputChange}>
+                <option value={'None'}>None</option>
+                <option value={'High School or Equivalent'}>High School or Equivalent</option>
+                <option value={'Diploma'}>Diploma</option>
+                <option value={"Bachelor's"}>Bachelor's</option>
+                <option value={"Master's"}>Master's</option>
+                <option value={"Doctorate"}>Doctorate</option>
+                <option value={"Other"}>Other</option>
+            </Select>
 
-                <Input 
-                id="school-field" 
-                placeholder="Field of Study" 
-                type="text" 
-                onChange={props.onInputChange}
-                value={props.fieldOfStudy}/>
+            <Input 
+            id="school-field" 
+            placeholder="Field of Study" 
+            type="text" 
+            onChange={props.onInputChange}
+            value={props.fieldOfStudy}/>
 
-                <Input 
-                id="school-location" 
-                placeholder="location" 
-                type="text" 
-                onChange={props.onInputChange}
-                value={props.location}/>
+            <Input 
+            id="school-location" 
+            placeholder="location" 
+            type="text" 
+            onChange={props.onInputChange}
+            value={props.location}/>
 
-                <Button id="school-save" onClick={props.onSave}>Save</Button>
-                <Button id="school-cancel" onClick={props.onCancel}>Cancel</Button>
-            </div>
-            <Button className="show-edu-details" onClick={props.addNewDetails}>Add Education Details</Button>
+            <Button id="school-save" onClick={props.onSave}>Save</Button>
+            <Button id="school-cancel" onClick={props.onCancel}>Cancel</Button>
         </div>
     )
 }
@@ -129,7 +126,8 @@ export default function EducationDetails(){
     }
 
     function showEduDetailsInput(e){
-        e.target.parentNode.childNodes[0].setAttribute('style', 'display:block;');
+        e.target.parentNode.parentNode.childNodes[1].setAttribute('style', 'display:block;');
+        // console.log(e.target.parentNode)
     }
 
     function deleteDetails(e){
@@ -138,28 +136,38 @@ export default function EducationDetails(){
 
     return(
         <div className="Education">
-        <>
-            {eduDetails.map(details=><EducationDetailsContent
-            // key={details.key}
-            schoolName={details.schoolName}
-            from={details.from}
-            to={details.to}
-            degree={details.degree}
-            fieldOfStudy={details.fieldOfStudy}
-            location={details.location}
-            deleteEduDetails={deleteDetails}
-            />)}
-        </>
-            <EducationDetailsInput 
-            onInputChange={handleChange}
-            onSave={addItems}
-            onCancel={hideComponent}
-            addNewDetails={showEduDetailsInput}
-            name={schoolName}
-            from={from}
-            to={to}
-            fieldOfStudy={fieldOfStudy}
-            location={location}/>
+            <PrintProvider>
+                <div className="edu-details-container">
+                    {eduDetails.map(details=>
+                    <Print>
+                        <EducationDetailsContent
+                        // key={details.key}
+                        schoolName={details.schoolName}
+                        from={details.from}
+                        to={details.to}
+                        degree={details.degree}
+                        fieldOfStudy={details.fieldOfStudy}
+                        location={details.location}
+                        deleteEduDetails={deleteDetails}
+                        />
+                    </Print>
+                    )}
+                </div>
+                <EducationDetailsInput 
+                onInputChange={handleChange}
+                onSave={addItems}
+                onCancel={hideComponent}
+                addNewDetails={showEduDetailsInput}
+                name={schoolName}
+                from={from}
+                to={to}
+                fieldOfStudy={fieldOfStudy}
+                location={location}/>
+                {/* <Button className="show-edu-details" onClick={props.addNewDetails}>Add Education Details</Button> */}
+                <NoPrint>
+                    <Button onClick={showEduDetailsInput}>Add Education Details</Button>
+                </NoPrint>
+            </PrintProvider>
         </div>
     )
 }

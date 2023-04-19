@@ -184,12 +184,13 @@ body{
 }
 
 .Experience{
-  padding: 1rem;
+  /* padding: 1rem; */
 }
 
 .job-details{
   margin-bottom: 10px;
   border-radius: 8px;
+  padding: 8px 1rem 8px 1rem;
 }
 
 .job-details:hover{

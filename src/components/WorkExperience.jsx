@@ -4,15 +4,19 @@ import { Input } from '@chakra-ui/react';
 import { Textarea } from '@chakra-ui/react'
 
 let currentId = 0;
+let positionStyle = {
+  color: '#CD7F32',
+  fontSize: '1.4rem',
+};
 
 function JobDetailsContent(props) {
   // console.log(props);
   return (
     <div className="job-details" id={props.id}>
-      <p><strong>{props.position}</strong></p>
-      <p>{props.companyName}</p>
+      <p style={positionStyle}><strong>{props.position}</strong></p>
+      <p style={{fontSize:'1.1rem', fontWeight:'bold'}}>{props.companyName}</p>
       <p>{props.from + " - " + props.to}</p>
-      <p>{props.location}</p>
+      {/* <p>{props.location}</p> */}
     </div>
   );
 }

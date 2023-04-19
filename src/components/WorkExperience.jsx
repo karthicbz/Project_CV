@@ -7,7 +7,7 @@ import PrintProvider, { Print, NoPrint } from 'react-easy-print';
 let currentId = 0;
 let positionStyle = {
   color: '#CD7F32',
-  fontSize: '1.4rem',
+  fontSize: '1.2rem',
 };
 
 function JobDetailsContent(props) {

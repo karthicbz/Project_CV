@@ -12,12 +12,13 @@ let positionStyle = {
 function JobDetailsContent(props) {
   // console.log(props);
   return (
-    <div className="job-details" id={props.id}>
+    <div 
+    className="job-details" 
+    id={props.id}
+    onClick={props.deleteJobDetail}>
       <p style={positionStyle}><strong>{props.position}</strong></p>
       <p style={{fontSize:'1.1rem', fontWeight:'bold'}}>{props.companyName}<span style={{fontWeight:'normal', fontSize:'1rem'}}> - {props.location}</span></p>
-      {/* <span>{props.location}</span> */}
       <p>{props.from + " - " + props.to}</p>
-      {/* <p>{props.description}</p> */}
       <ul style={{marginLeft:'1.1rem'}}>{props.description.split('\n').map(desc=><li>{desc}</li>)}</ul>
     </div>
   );
@@ -121,7 +122,11 @@ export default function WorkExperience() {
   }
 
   function showJobInputContainer(e){
-    e.target.parentNode.childNodes[1].setAttribute('style', 'display:block;')
+    e.target.parentNode.childNodes[1].setAttribute('style', 'display:block;');
+  }
+
+  function removeJobDetails(e){
+    setJobDetails(jobDetails.filter(details=>parseInt(e.target.parentNode.id) !== parseInt(details.id)));
   }
 
   return (
@@ -136,6 +141,7 @@ export default function WorkExperience() {
             to={details.prevWorkEnd}
             location={details.prevWorkLocation}
             description={details.prevWorkDesc}
+            deleteJobDetail={removeJobDetails}
           />
         ))}
       </div>

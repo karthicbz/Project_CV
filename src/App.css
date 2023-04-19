@@ -189,4 +189,10 @@ body{
 
 .job-details{
   margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.job-details:hover{
+  cursor: pointer;
+  background: rgba(245, 124, 124, 0.342);
 }

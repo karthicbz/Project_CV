@@ -115,6 +115,13 @@ body{
 
 .add-edu-details{
   display: none;
+  padding: 1rem;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.add-edu-details .chakra-button{
+  margin: 0 8px;
 }
 
 .add-edu-details>.chakra-input{

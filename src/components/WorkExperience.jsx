@@ -8,7 +8,7 @@ let currentId = 0;
 function JobDetailsContent(props) {
   // console.log(props);
   return (
-    <div className="job-details-container" id={props.id}>
+    <div className="job-details" id={props.id}>
       <p><strong>{props.position}</strong></p>
       <p>{props.companyName}</p>
       <p>{props.from + " - " + props.to}</p>
@@ -47,8 +47,9 @@ function JobDetailsInput(props) {
       id="location" />
 
       <label id="description">Description</label>
-      <Textarea 
-      placeholder="Description turn into bullet points"
+      <Textarea
+      rows="5" 
+      placeholder="Newline turns into bullet point"
       className="description"></Textarea>
 
       <Button 
@@ -87,7 +88,7 @@ export default function WorkExperience() {
     }
   }
 
-  function saveJobDetails() {
+  function saveJobDetails(e) {
     setJobDetails([
       ...jobDetails,
       {
@@ -100,6 +101,7 @@ export default function WorkExperience() {
       }
     ]);
     // console.log(jobDetails);
+    e.target.parentNode.setAttribute('style', 'display:none;');
   }
 
   function hideJobInputContainer(e){
@@ -107,12 +109,12 @@ export default function WorkExperience() {
   }
 
   function showJobInputContainer(e){
-    e.target.parentNode.childNodes[0].setAttribute('style', 'display:block;')
+    e.target.parentNode.childNodes[1].setAttribute('style', 'display:block;')
   }
 
   return (
     <div className="Experience">
-      <>
+      <div className="job-details-container">
         {jobDetails.map((details) => (
           <JobDetailsContent
             id={details.id}
@@ -123,7 +125,7 @@ export default function WorkExperience() {
             location={details.prevWorkLocation}
           />
         ))}
-      </>
+      </div>
       <JobDetailsInput
         onInputChange={handleInputChange}
         onPressingSave={saveJobDetails}

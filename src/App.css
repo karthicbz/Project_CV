@@ -169,6 +169,24 @@ body{
   margin-bottom: 8px;
 }
 
+.job-input-container>input{
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.job-input-container>.chakra-textarea{
+  margin: 8px 0;
+  resize: none;
+}
+
+.job-input-container>label{
+  margin-left: 4px;
+}
+
 .Experience{
   padding: 1rem;
+}
+
+.job-details{
+  margin-bottom: 10px;
 }

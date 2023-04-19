@@ -22,6 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <App />
       <NoPrint>
         <Button colorScheme="teal" onClick={changeWidth}>Save Pdf</Button>
+        <h1>Hello</h1>
       </NoPrint>
     </ChakraProvider>
   </PrintProvider>
